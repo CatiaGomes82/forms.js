@@ -5,10 +5,136 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Forms.js</title>
-</head>
+    <style>
+        *:focus{ outline: none; }
+
+        /* TODO remove */
+        .field { margin-top: 30px; }
+        .field:first-child { margin-top: 0; }
+
+        textarea,
+        input { border: none; background: none; width: 100%; position: relative; z-index: 1; }
+
+
+
+        .password-field,
+        .email-field,
+        .textarea-field,
+        .select-field,
+        .number-field,
+        .checkbox-field,
+        .text-field { position: relative; }
+      
+        .password-field span,
+        .email-field span,
+        .textarea-field span,
+        .number-field span,
+        .text-field span { border: 1px solid #000; position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+        
+        input[type="radio"],
+        input[type="checkbox"],
+        select { display: none; }
+        textarea { resize: none; }
+
+        ul { list-style: none; margin: 0; padding: 0; }
+
+
+        .select-field span { border: 1px solid #000; }
+        .select-field .list { display: none; position: absolute; top:100%; left:0; }
+        .select-field span { height: 20px; }
+        .select-field span::after { content: '\2228'; }
+        .select-field.open span::after { content: '\2227'; }
+        .select-field.open .list { display: block; max-height: 100px; overflow: auto;}
+        .select-field li { border: 1px solid lightgray; background: #fff; }
+        .select-field .list.open-above { top: auto; bottom: 100%; }
+
+        .radio-field {}
+        .radio-field span,
+        .checkbox-field span { width: 20px; height: 20px; border: 1px solid #000; display: block; }
+        .radio-field.checked span,
+        .checkbox-field.checked span { background: darkgray; }
+    </style>
+    </head>
 
 <body>
-    
+    <form data-form="true">
+        <div class="field">
+            <label for="text">Text</label>
+            <input type="text" id="text" name="text" placeholder="Text">
+        </div>
+        <div class="field"> 
+            <input type="checkbox" name="vehicle1" value="Bike" checked> I have a bike<br>
+            <input type="checkbox" name="vehicle2" value="Car"> I have a car<br>
+        </div>
+        <div class="field">
+            <input type="radio" id="huey" name="drone" value="huey" checked>
+            <label for="huey">Huey</label>
+            <input type="radio" id="dewey" name="drone" value="dewey">
+            <label for="dewey">Dewey</label>
+        </div>
+        <div class="field">
+            <label for="select">Select</label>
+            <select id="select" name="select" data-default-text="Select option">
+                <option value="australia">Australia</option>
+                <option value="canada">Canada</option>
+                <option value="usa">USA</option>
+            </select>
+        </div>
+        <div class="field">
+            <input list="browsers">
+            <datalist id="browsers">
+                <option value="Internet Explorer">
+                <option value="Firefox">
+                <option value="Chrome">
+                <option value="Opera">
+                <option value="Safari">
+            </datalist>
+        </div>
+        <div class="field">
+            <label for="textarea">Textarea</label>
+            <textarea id="textarea" name="textarea" placeholder="Textarea"></textarea>
+        </div>
+        <div class="field">
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="Email" name="email">
+        </div> 
+        <div class="field">
+            <label for="password">Password</label>
+            <input type="password" id="password" placeholder="Password" name="password">
+        </div>
+        <div class="field">
+            <label for="number">Number</label>
+            <input type="number" id="number" placeholder="Number" name="number">
+        </div>
+        <div class="field">
+            <input type="date">
+            <input type="datetime-local">
+            <input type="image">
+            <input type="month">
+            <input type="tel">
+            <input type="url">
+            <input type="week">
+        </div>
+        <div class="field">
+                <label for="range">Range</label>
+                <input type="range" id="range" placeholder="Range" name="range">
+            </div>
+        <div class="field">
+            <label for="search">Search</label>
+            <input type="search" id="search" placeholder="Search" name="search">
+        </div>
+        <div class="field"> 
+            <label for="time">Time</label>
+            <input type="time" id="time" placeholder="Time" name="time">
+        </div>
+        <div class="field">
+            <label for="file">File</label>
+            <input type="file" id="file" placeholder="File" name="file">
+        </div>
+        <input type="submit" value="Submit">
+    </form>
+    <script src="https://code.jquery.com/jquery-3.4.0.min.js"></script>
+    <script src="/src/forms.js"></script>
 </body>
 
 </html>
